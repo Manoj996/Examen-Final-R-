@@ -28,25 +28,32 @@ Las expresiones regulares consisten en la manipulación de data tipo string o te
 
 Entre estas dos paginas de recursos de funciones REGEX podemos hacer las siguientes comparaciones: 
 
-En la primera página, <https://rstudio-pubs-static.s3.amazonaws.com/74603_76cd14d5983f47408fdf0b323550b846.html>, podemos ver detalladamente como podemos utilizar funciones Regex para manipular datos de tipo “string”. La página nos enseña  que tipos de paquetes usar como “stringr”, cuales funciones están relacionada a expresiones regulares y los diferentes tipos de sintaxis para buscar patrones dentro de un texto o lista de string. 
+La [**primera página**](https://rstudio-pubs-static.s3.amazonaws.com/74603_76cd14d5983f47408fdf0b323550b846.html) , podemos ver detalladamente como se utilizan funciones Regex para manipular datos de tipo “string”. La página nos enseña  que tipos de paquetes usar como “stringr”, cuales funciones están relacionada a expresiones regulares y los diferentes tipos de sintaxis para buscar patrones dentro de un texto o lista de string. 
 A su vez, el formato en el que esta estructurado la página es similar al de Rmarkdown, ya que divide los comentarios y las funciones o líneas de programación. Este formato nos ayuda a saber sin leer todo el texto, cuando se está viendo ejemplos con los códigos utilizados en R y cuando son comentarios. 
 <br>  
-La siguiente página, <https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html>, está en un formato html y es difícil de entender ya que nos dice las funciones que pueden ser utilizadas para expresiones regulares, pero no nos da una explicación muy concreta de lo que significa. Todas las explicaciones están muy corridas, y no están bien segmentadas en relación con las características que se desean explicar. 
+La [**segunda página**](https://stat.ethz.ch/R-manual/R-devel/library/base/html/regex.html), nos describe los diferentes tipos de meta-caracteres que se pueden utilizar para encontrar patrones. Pero solo nos menciona algunas de las funciones que se utilizan como Grep y gsub que son los que mas se utilizan. Pero  no proporciona una información concreta de como se utilizan.Además, todas las explicaciones están muy corridas, y no están bien segmentadas en relación con las características que se desean explicar. 
 <br>
 
 ## Rmarkdown 
 
-Rmarkdown se considera un marco de referencia en el que se puede usar codigo de R para crear reportes dinamicos y convertido en un formato leible ya sea por PDF, HTML o Word.
+Rmarkdown se considera un marco de referencia en el que se puede usar codigo de R para crear reportes dinamicos y convertirlos en un formato leible ya sea por PDF, HTML o Word.
 
 Entre las dos paginas de recursos de Rmarkdown podemos hacer las siguientes comparaciones: 
 
-Esta página, <https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html>, nos enseña los principios básicos de Rmarkdown . Comenzando por como instalar un paquete, como estructurar el encabezado que se utiliza en R, como separar los códigos de los comentarios que se quieran proporcionar y esconderlos para que solo se vea el resultado.  Además, nos proporciona ejemplos al insertar figuras y tablas que son muy útiles al poner graficas. 
+En la [**primera página**](https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html) nos enseña los principios básicos de Rmarkdown . Comenzando por como instalar un paquete, como estructurar el encabezado que se utiliza en R y como separar los códigos de los comentarios que se quieran proporcionar.Además, nos proporciona información al usar codigos en r y como esconderlos para que solo se vea solo el resultado.
+Algunas de estas instrucciones son: 
 
-La siguiente página, <https://medium.com/@franperez/introduction-to-rmarkdown-fa0ad8338153>, nos explica sobre Rmarkdown de una forma muy generalizada, ya que no nos provee información de los procesos para añadirle un buen formato o como funciona el mismo Rmarkdown. Además, se salta mucho contenido sobre como se configuran los codigos y nos da el resultado final sin una explicación de los procedimientos utilizados para llegar al resultado. 
+| Reglas            |              Explicación                        |
+|:-----------------:|:-----------------------------------------------:|
+| echo = false      | el codigo no se depliega en el resultado final  |
+| include = false   | no se despliega el codigo ni el resultado       |
+| message = false   | no se despliegue ningun mensaje.                |
+
+La [**segunda página**](https://medium.com/@franperez/introduction-to-rmarkdown-fa0ad8338153) nos explica sobre Rmarkdown de una forma muy generalizada, ya que no nos provee información de los procesos para añadirle un buen formato o como funciona el mismo Rmarkdown. Además, se salta mucho contenido sobre como se configuran los codigos y nos da el resultado final sin una explicación de los procedimientos utilizados para llegar al resultado. 
 
 
 ## Gráfica
-```{r, echo=FALSE,include=FALSE,warning=FALSE}
+```{r, echo=FALSE,include=FALSE, message=FALSE}
 #Webscrapping de tabla
 url.index <- "https://www.indexmundi.com/commodities/?commodity=robusta-coffee&months=12&commodity=tea&indicator=price-ratio"
 tmp <- read_html(url.index) #Extrae codigo de html
@@ -157,12 +164,11 @@ c
 ```
 
 <br>
-En este grafico podemos ver la comparación mensual entre la tasa de cambio en el precio del café robusta y la tasa de cambio en el precio del té. En primer lugar vemos que, dentro de los primeros meses, en Diciembre el precio del café tiende a ser el más bajo en todo el periodo de -7.07% y el té en este mes tiene cambios leves aproximadamente un -2.5%.  Podemos asumir que este mes se tiene un excedente de productividad de café en relación con su demanda, en lo que conlleva a que el mercado baje sus precios.  
+En este grafico podemos ver la comparación mensual entre la tasa de cambio en el precio del café robusta y la tasa de cambio en el precio del té. En primer lugar vemos que, dentro de los primeros meses, en Diciembre el precio del café tiende a ser el más bajo en todo el periodo de -7.07% y el té en este mes tiene cambios leves aproximadamente un -2.5%.  Podemos asumir que este mes se tiene un excedente de productividad de café en relación con su demanda, ya que conlleva a que el mercado baje sus precios.  
 <br><br>
-Entrando Enero hasta Febrero, el comportamiento se tiende a invertir ya que para el precio del café tiende a estar más estable por 0.58% en los dos meses y él te baja por -3.55 puntos porcentuales. Luego entre Marzo hasta Agosto el precio del té tiende a variar dramáticamente. Por ejemplo, de Marzo a Abril el precio salta por +7.49 puntos y seguido de Mayo a Junio hay un cambio por -14.12 puntos. Con este cambio tan volátil podemos asumir que entre Marzo a Abril hubo menos producción en té y de Mayo a Junio hubo un excedente de lo presupuesto en el suministro del té.
+Entrando Enero hasta Febrero, el comportamiento se tiende a invertir debido a que el precio del café es más estable por 0.58% en los dos meses y él té baja por -3.55 puntos porcentuales. Luego entre Marzo hasta Agosto el precio del té tiende a variar dramáticamente. Por ejemplo, de Marzo a Abril el precio salta por +7.49 puntos y seguido de Mayo a Junio hay un cambio por -14.12 puntos. Con este cambio tan volátil podemos asumir que entre Marzo a Abril hubo menos producción en té y de Mayo a Junio hubo un excedente de lo presupuesto en el suministro del té.
 <br><br>
 En resumen, al comparar los dos productos básicos podemos destacar que el té tiende a ser más volátil ya que sus movimientos de precios son más drásticos entre cada mes al compararlos con sus puntos porcentuales. Por otra parte, el precio del café tiende a ser más predecibles mensualmente ya que en su mayoría el precio sube o baja entre dos periodos. Por ejemplo, de Abril a Agosto podemos ver un incremento de +1.62 y luego otro incremento más alto de +6.91 puntos porcentuales.
-
 
 
 ## Tabla de variación de precios
@@ -176,7 +182,6 @@ Tabla <- kable(CvsT3, col.names = c("Periodo", "Precio Café", "Cambio % café",
   kable_styling(bootstrap_options = "striped", full_width = F)
 
 ```
-
 
 ```{r table, echo = FALSE}
 Tabla
