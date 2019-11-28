@@ -1,5 +1,5 @@
 # Examen-Final-R-
-Para ejecutar el Rmarkdown se deberan tener los siguientes paquetes: 
+Para ejecutar el Rmarkdown se deberan tener las siguientes librerías: 
 - library(rvest)
 - library(lubridate)
 - library(reshape2)
